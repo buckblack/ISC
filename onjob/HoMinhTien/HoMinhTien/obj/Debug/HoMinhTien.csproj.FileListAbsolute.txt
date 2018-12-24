@@ -1,0 +1,10 @@
+D:\ISC\onjob\HoMinhTien\HoMinhTien\bin\Debug\HoMinhTien.exe.config
+D:\ISC\onjob\HoMinhTien\HoMinhTien\bin\Debug\HoMinhTien.exe
+D:\ISC\onjob\HoMinhTien\HoMinhTien\bin\Debug\HoMinhTien.pdb
+D:\ISC\onjob\HoMinhTien\HoMinhTien\obj\Debug\HoMinhTien.csprojResolveAssemblyReference.cache
+D:\ISC\onjob\HoMinhTien\HoMinhTien\obj\Debug\HoMinhTien.Form1.resources
+D:\ISC\onjob\HoMinhTien\HoMinhTien\obj\Debug\HoMinhTien.Properties.Resources.resources
+D:\ISC\onjob\HoMinhTien\HoMinhTien\obj\Debug\HoMinhTien.csproj.GenerateResource.Cache
+D:\ISC\onjob\HoMinhTien\HoMinhTien\obj\Debug\HoMinhTien.exe
+D:\ISC\onjob\HoMinhTien\HoMinhTien\obj\Debug\HoMinhTien.pdb
+D:\ISC\onjob\HoMinhTien\HoMinhTien\obj\Debug\HoMinhTien.bai1.resources
