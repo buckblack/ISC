@@ -13,8 +13,10 @@
 		<Model Expanded="Yes" ID="{36B3F5A4-6CF9-43DE-A2E1-CFB100910711}" Loaded="No" Name="ql_ban_dien_thoai" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="ql_ban_dien_thoai.cdm"/>
 		<Model Expanded="Yes" ID="{36B3F5A4-6CF9-43DE-A2E1-CFB100910711}" Loaded="No" Name="ql_ban_dien_thoai" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="ql_ban_dien_thoai.cdm"/>
 		<Model Expanded="Yes" ID="{5593F8A2-5067-4025-92AD-3C66E5D01CCD}" Loaded="No" Name="ERD_benh_vien" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="ERD_benh_vien.cdm"/>
-		<Model ID="{8FEAC494-7725-4BB6-B54D-A64FD2F5A390}" Name="phieu_danh_gia" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="phieu_danh_gia.cdm"/>
-		<Model ID="{AE636D1B-B27B-48B0-9187-CAEE981ADB5D}" Name="phieu_danh_gia" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="phieu_danh_gia.pdm"/>
+		<Model ID="{8FEAC494-7725-4BB6-B54D-A64FD2F5A390}" Loaded="No" Name="phieu_danh_gia" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="phieu_danh_gia.cdm"/>
+		<Model ID="{AE636D1B-B27B-48B0-9187-CAEE981ADB5D}" Loaded="No" Name="phieu_danh_gia" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="phieu_danh_gia.pdm"/>
+		<Model Expanded="Yes" ID="{A5B4FEB4-FAF3-43EA-B65D-CC17D849D058}" Name="Xe_tai_xe" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="Xe_tai_xe.cdm"/>
+		<Model Expanded="Yes" ID="{8F35DE14-647F-4059-8C5B-AFB18C4233F8}" Name="Xe_tai_xe" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="Xe_tai_xe.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

@@ -9,7 +9,7 @@ class database
 	{
         try
 		{
-			$this->pdo = new PDO('mysql:host=localhost;dbname=nha_hang','root','');
+			$this->pdo = new PDO('mysql:host=localhost;dbname=ql_ban_hang','root','');
         	$this->pdo->query('set names "utf8"');
 		}
 		catch(PDOException $ex)
