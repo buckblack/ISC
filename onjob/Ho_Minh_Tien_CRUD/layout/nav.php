@@ -1,17 +1,3 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/style.css">
-    <title>Admin</title>
-</head>
-
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -35,8 +21,8 @@
                     </div>
                     <div class="panel-collapse collapse" id="pn_1">
                         <div class="panel-body">
-                        <a href="#" class="btn btn-outline-dark w-75 float-right mb-2">Thêm mới</a>
-                        <a href="#" class="btn btn-outline-dark w-75 float-right mb-2">Danh sách</a>
+                        <a href="them_san_pham.php" class="btn btn-outline-dark w-75 float-right mb-2">Thêm mới</a>
+                        <a href="ds_san_pham.php" class="btn btn-outline-dark w-75 float-right mb-2">Danh sách</a>
                         </div>
                     </div>
                 </div>
@@ -47,36 +33,10 @@
                     </div>
                     <div class="panel-collapse collapse" id="pn_2">
                         <div class="panel-body">
-                        <a href="#" class="btn btn-outline-dark w-75 float-right mb-2">Thêm mới</a>
-                        <a href="#" class="btn btn-outline-dark w-75 float-right mb-2">Danh sách</a>
+                        <a href="them_nhan_vien.php" class="btn btn-outline-dark w-75 float-right mb-2">Thêm mới</a>
+                        <a href="ds_nhan_vien.php" class="btn btn-outline-dark w-75 float-right mb-2">Danh sách</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="col-lg-10">
-            <a href="#"><div class="quick text-center">
-                <img src="public/images/add.png" class="img-fluid" alt="">
-                <p class="text-center">Thêm sản phẩm</p>
-            </div></a>
-            <a href="#"><div class="quick text-center">
-                <img src="public/images/employee.png" class="img-fluid" alt="">
-                <p class="text-center">Thêm khách hàng</p>
-            </div></a>
-            <div class="clear"></div>
-            <div class="container-fluid">
-                <div class="container">
-                    <button class="btn btn-outline-dark w-100"></button>
-                </div>
-            </div>
-        </div>
-        </div>
-</div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="public/js/jquery-3.3.1.min.js"></script>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
