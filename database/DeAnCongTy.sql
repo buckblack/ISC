@@ -126,9 +126,16 @@ and da.PHONG in (
 				where ph.MAPHG=dd.MAPHG and dd.DIADIEM <> 'TP HCM'
 				)
 
---9) Tổng quát câu 16, tìm họ tên và địa chỉ của các nhân viên làm việc cho một đề án ở một thành phố nhưng phòng ban mà họ trực thuộc lại không toạ lạc ở thành phố đó.
-select * from PHONGBAN ph, DIADIEM_PHG dd
-where ph.MAPHG=dd.MAPHG
-
+--9) Tìm họ tên và địa chỉ của các nhân viên làm việc cho một đề án ở một thành phố nhưng phòng ban mà họ trực thuộc lại không toạ lạc ở thành phố đó.
 select * from DEAN da,PHANCONG pc, NHANVIEN nv
 where da.MADA=pc.SODA and nv.MANV=pc.MA_NVIEN
+and nv.phg in (
+				select ph.maphg from PHONGBAN ph, DIADIEM_PHG dd
+				where ph.MAPHG=dd.MAPHG and dd.diadiem <> da.ddiem_da
+				)
+
+
+
+
+
+
