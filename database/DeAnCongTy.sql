@@ -100,12 +100,16 @@ select HONV from NHANVIEN
 where MANV not in (select MA_NVIEN from THANNHAN where QUANHE='Vo Chong' and MANV=MA_NVIEN)
 and MANV in (select p.TRPHG from PHONGBAN p where TRPHG=MANV)
 
+select n.* from PHONGBAN p, NHANVIEN n
+where n.MANV=p.TRPHG and not exists (select * from THANNHAN t where t.MA_NVIEN=n.MANV)
+
 --6) Cho biết họ tên nhân viên (HONV, TENLOT, TENNV) có mức lương trên mức lương trung bình của phòng "Nghien cuu" 
-select HONV,TENLOT,TENNV from NHANVIEN
+select HONV,TENLOT,TENNV from NHANVIEN nv
 where LUONG > (
 				select AVG(LUONG) from NHANVIEN n,PHONGBAN p
 				where n.PHG=p.MAPHG and p.TENPHG='Nghien cuu'
 				)
+
 
 --7) Cho biết tên phòng ban và họ tên trưởng phòng của phòng ban có đông nhân viên nhất.
 select p.TENPHG,n.HONV,n.TENLOT,n.TENNV from PHONGBAN p, NHANVIEN n,
@@ -118,6 +122,12 @@ select p.TENPHG,n.HONV,n.TENLOT,n.TENNV from PHONGBAN p, NHANVIEN n,
 							) as tmp
 where n.PHG=p.MAPHG and n.MANV=p.TRPHG and tmp.MAPHG=p.MAPHG
 
+
+with temp as
+(select nv.PHG,count(nv.MANV) as sl_nv from NHANVIEN nv group by nv.PHG)
+select nv.HONV,nv.TENLOT,nv.TENNV from temp t1,NHANVIEN nv,PHONGBAN pb
+where t1.sl_nv=(select max(t2.sl_nv) from temp t2) and nv.MANV=pb.TRPHG and t1.PHG=pb.MAPHG
+
 --8) Tìm họ tên (HONV, TENLOT, TENNV) và địa chỉ (DCHI) của những nhân viên làm việc cho một đề án ở ‘TP HCM’  nhưng phòng ban mà họ trực thuộc lại không tọa lạc ở thành phố ‘TP HCM’.
 select nv.HONV,nv.TENLOT,nv.TENNV,nv.DCHI from DEAN da,PHANCONG pc, NHANVIEN nv
 where da.MADA=pc.SODA and nv.MANV=pc.MA_NVIEN and da.DDIEM_DA='TP HCM' 
@@ -125,6 +135,15 @@ and da.PHONG in (
 				select ph.MAPHG from PHONGBAN ph, DIADIEM_PHG dd
 				where ph.MAPHG=dd.MAPHG and dd.DIADIEM <> 'TP HCM'
 				)
+
+
+select nv.HONV,nv.TENLOT,nv.TENNV,nv.DCHI
+from NHANVIEN nv join PHANCONG pc on pc.MA_NVIEN=nv.MANV join DEAN da on 
+(da.MADA=pc.SODA and da.DDIEM_DA='TP HCM')
+except
+select nv.HONV,nv.TENLOT,nv.TENNV,nv.DCHI
+from NHANVIEN nv join PHONGBAN pb on nv.PHG=pb.MAPHG
+join DIADIEM_PHG dd on dd.MAPHG=pb.MAPHG and dd.DIADIEM='TP HCM'
 
 --9) Tìm họ tên và địa chỉ của các nhân viên làm việc cho một đề án ở một thành phố nhưng phòng ban mà họ trực thuộc lại không toạ lạc ở thành phố đó.
 select * from DEAN da,PHANCONG pc, NHANVIEN nv
