@@ -3158,3 +3158,40 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
 {
     background-color: #ebebeb !important;
 }
+input.hoa-don
+{
+    width: 60px !important;
+}
+
+@media screen and (min-width: 480px){
+    .width-auto
+    {
+        height: auto;
+    }
+}
+@media screen and (min-width: 768px){
+    .width-auto
+    {
+        height: 100%;
+    }
+}
+@media screen and (max-width: 767px){
+    .btn-thanh-toan
+    {
+        width: 90%;
+        margin-bottom: 5px;
+    }
+}
+@media screen and (max-width: 992px){
+    .ten-nha-hang
+    {
+        font-size: 2rem;
+    }
+}
+.asasas
+{
+    margin: 0 auto !important;
+}
+
+
+
