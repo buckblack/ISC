@@ -22,12 +22,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
     </script>
     <!-- bootstrap-css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
-    <!-- //bootstrap-css -->
-    <!-- Custom CSS -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' >
     <link href="css/style.css" rel='stylesheet' type='text/css' />
     <link href="css/style-responsive.css" rel="stylesheet" />
     <!-- font CSS -->
@@ -427,45 +422,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.scrollTo.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script>
-    CKEDITOR.replace('binh_luan', {
-        customConfig: 'config_binh_luan.js'
-    });
-    CKEDITOR.replace('binh_luan2', {
-        customConfig: 'config_binh_luan.js'
-    });
-</script>
-    <script>
-        check_img.onclick = () => {
-            var kq = document.getElementsByClassName('table_hinh')
-            if (check_img.checked == true)
-                for (var i = 0; i < kq.length; i++) {
-                    kq[i].style.display = "none"
-                    console.log(kq[i].innerHTML);
-                }
-            else
-                for (var i = 0; i < kq.length; i++) {
-                    kq[i].style.display = "block"
-                }
-        }
-        check_status.onclick = () => {
-            var kq = document.getElementsByClassName('table_status')
-            if (check_status.checked == true)
-                for (var i = 0; i < kq.length; i++) {
-                    kq[i].style.display = "none"
-                    console.log(kq[i].innerHTML);
-                }
-            else
-                for (var i = 0; i < kq.length; i++) {
-                    kq[i].style.display = "block"
-                }
-        }
-    </script>
-    <script>
-        btn_capnhat.onclick = () => {
-            btn_close_detai.click()
-        }
-    </script>
+<script src="js/myscript.js"></script>
+
 </body>
 
 </html>
