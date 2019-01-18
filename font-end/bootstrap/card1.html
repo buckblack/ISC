@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <img src="images/user.png" class="card-img-top img-fluid w-50 pb-3" alt="...">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Tên đăng nhập">
+                            <input type="text" id="ten_dn" class="form-control" placeholder="Tên đăng nhập">
                             <div class="input-group-append">
                                 <span class="input-group-text size-icon"><i class="fa fa-user m-auto"></i></span>
                             </div>
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="card-text text-right text-primary mb-2"><a href="#">Quên mật khẩu?</a></div>
-                        <button href="#" class="btn btn-primary px-4"><i class="fa fa-sign-in mr-2"></i> Đăng nhập</button>
+                        <button class="btn btn-primary px-4"><i class="fa fa-sign-in mr-2"></i> Đăng nhập</button>
                     </div>
                 </div>
             </div>
@@ -50,6 +50,14 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ten_dn').val('admin');
+            var ten=$('#ten_dn').prop('value')
+            console.log(ten);
+            
+        });
+    </script>
 </body>
 
 </html>
