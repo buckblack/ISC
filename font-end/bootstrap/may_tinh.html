@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Máy tính</title>
+</head>
+
+<body class="h-100">
+    <div class="container h-100">
+        <div class="row align-items-center justify-content-center h-100">
+            <div class="col-lg-6 border p-2">
+                <div class="col-12">
+                    <input type="text" id="ket_qua" class="form-control-lg w-100 text-right" />
+                </div>
+                <div class="col-12 form-inline my-1">
+                    <button id="btn_c" class="btn-lg btn-outline-secondary w-50">C</button>
+                    <button id="btn_b" class="btn-lg btn-outline-secondary w-25">B</button>
+                    <button id="btn_chia" class="btn-lg btn-outline-secondary w-25">/</button>
+                </div>
+                <div class="col-12 form-inline my-1">
+                    <button id="btn_7" class="btn-lg btn-outline-secondary w-25">7</button>
+                    <button id="btn_8" class="btn-lg btn-outline-secondary w-25">8</button>
+                    <button id="btn_9" class="btn-lg btn-outline-secondary w-25">9</button>
+                    <button id="btn_nhan" class="btn-lg btn-outline-secondary w-25">*</button>
+                </div>
+                <div class="col-12 form-inline my-1">
+                    <button id="btn_4" class="btn-lg btn-outline-secondary w-25">4</button>
+                    <button id="btn_5" class="btn-lg btn-outline-secondary w-25">5</button>
+                    <button id="btn_6" class="btn-lg btn-outline-secondary w-25">6</button>
+                    <button id="btn_tru" class="btn-lg btn-outline-secondary w-25">-</button>
+                </div>
+                <div class="col-12 form-inline my-1">
+                    <button id="btn_1" class="btn-lg btn-outline-secondary w-25">1</button>
+                    <button id="btn_2" class="btn-lg btn-outline-secondary w-25">2</button>
+                    <button id="btn_3" class="btn-lg btn-outline-secondary w-25">3</button>
+                    <button id="btn_cong" class="btn-lg btn-outline-secondary w-25">+</button>
+                </div>
+                <div class="col-12 form-inline my-1">
+                    <button id="btn_am" class="btn-lg btn-outline-secondary w-25">+/-</button>
+                    <button id="btn_0" class="btn-lg btn-outline-secondary w-25">0</button>
+                    <button id="btn_cham" class="btn-lg btn-outline-secondary w-25">.</button>
+                    <button id="btn_bang" class="btn-lg btn-outline-secondary w-25">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btn_0').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "0")
+            })
+            $('#btn_1').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "1")
+            })
+            $('#btn_2').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "2")
+            })
+            $('#btn_3').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "3")
+            })
+            $('#btn_4').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "4")
+            })
+            $('#btn_5').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "5")
+            })
+            $('#btn_6').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "6")
+            })
+            $('#btn_7').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "7")
+            })
+            $('#btn_8').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "8")
+            })
+            $('#btn_9').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + "9")
+            })
+            $('#btn_am').click(() => {
+                var kq = $('#ket_qua').val()
+                if (kq.indexOf('-') == -1)
+                    $('#ket_qua').val('-' + kq)
+                else
+                    $('#ket_qua').val(kq.replace('-', ''))
+            })
+            $('#btn_cham').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + '.')
+            })
+            $('#btn_chia').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + '/')
+            })
+            $('#btn_tru').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + '-')
+            })
+            $('#btn_cong').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + '+')
+            })
+            $('#btn_nhan').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq + '*')
+            })
+            $('#btn_c').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val('')
+            })
+            $('#btn_b').click(() => {
+                var kq = $('#ket_qua').val()
+                $('#ket_qua').val(kq.substr(0, kq.length - 1))
+            })
+            $('#btn_bang').click(() => {
+                var kq = $('#ket_qua').val()
+                try 
+                {
+                    $('#ket_qua').val(eval(kq))
+                } catch (ex) 
+                {
+                    alert("Phép toán sai")
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
