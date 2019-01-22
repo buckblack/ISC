@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/nivo-slider.css">
+    <link rel="stylesheet" href="themes/default/default.css" type="text/css" media="screen" />
+    <title>Máy tính</title>
+</head>
+
+<body>
+    <button id="btnShow">Show</button>
+    <button id="btnHide">Hide</button>
+    <button id="btnToggle">Toggle</button>
+    <div id="content">It is a long established fact that a reader will be distracted by the readable content of a page
+        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+        letters, as opposed to using 'Content here, content here', making it look like readable English</div>
+    <div id="wrapper">
+        <a href="http://dev7studios.com" id="dev7link" title="Go to dev7studios">dev7studios</a>
+
+        <div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+                <img src="images/toystory.jpg" data-thumb="images/toystory.jpg" alt="" />
+                <a href="http://dev7studios.com"><img src="images/up.jpg" data-thumb="images/up.jpg" alt="" title="This is an example of a caption" /></a>
+                <img src="images/walle.jpg" data-thumb="images/walle.jpg" alt="" data-transition="slideInLeft" />
+                <img src="images/nemo.jpg" data-thumb="images/nemo.jpg" alt="" title="#htmlcaption" />
+            </div>
+            <div id="htmlcaption" class="nivo-html-caption">
+                <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+            </div>
+        </div>
+
+    </div>
+
+    <!--
+        <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <input type="text" name="" class="form-control" id="txtA">
+            </div>
+            <div class="col-auto">
+                <select name="" id="drpOp" class="form-control">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="x">x</option>
+                    <option value="/">/</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" name="" class="form-control" id="txtB">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <button id="btnCalc" class="btn btn-primary">Calc</button>
+            </div>
+            <div class="col">
+                <span id="result" class="h2"></span>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#slider').nivoSlider();
+        });
+    </script>
+    <script>
+        /*
+        $(document).ready(function () {
+            $('#btnCalc').on('click', function () {
+                alert('Cách 1')
+            })
+            $('#btnCalc').click(function () {
+                Caculate()
+            });
+            $('#txtA,#txtB,#drpOp').change(function () {
+                Caculate()
+            });
+        });
+        function Caculate() {
+            var a = $('#txtA').val();
+            var b = $('#txtB').val();
+            var o = $('#drpOp').val();
+            var result = 0;
+            switch (o) {
+                case '+':
+                    result = Number(a) + Number(b);
+                    break;
+                case '-':
+                    result = Number(a) - Number(b);
+                    break;
+                case 'x':
+                    result = Number(a) * Number(b);
+                    break;
+                case '/':
+                    result = Number(a) / Number(b);
+                    break;
+
+            }
+            $('#result').text(result.toFixed(2))
+        }
+        */
+        $(document).ready(function () {
+            $('#btnShow').click(function () {
+                //$('#content').show();
+                //$('#content').fadeIn();
+                $('#content').slideDown();
+            });
+            $('#btnHide').click(function () {
+                //$('#content').hide('slow');
+                //$('#content').fadeOut();
+                $('#content').slideUp();
+            });
+            $('#btnToggle').click(function () {
+                /*$('#content').toggle(1000,()=>{
+                    alert('Xong')
+                });*/
+                $('#content').slideToggle(1000);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
