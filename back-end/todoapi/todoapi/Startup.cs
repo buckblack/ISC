@@ -35,6 +35,13 @@ namespace todoapi
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<TodoContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders", builder =>
+                {
+                    builder.WithOrigins("*").AllowAnyHeader();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +58,7 @@ namespace todoapi
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("AllowAllHeaders");
             app.UseMvc();
         }
     }
