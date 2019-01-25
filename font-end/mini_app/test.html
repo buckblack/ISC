@@ -1,0 +1,22 @@
+
+<html>
+<head>
+</head>
+<body>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                type: "Get",
+                url: "https://localhost:44357/api/Todo/CompletedTask",
+                success: function (data) {
+                    alert('Thành công: CORS Enable')
+                },
+                error:function(){
+                    alert('Thất bại: CORS Disable')
+                }
+            });
+        })
+    </script>
+</body>
+</html>
