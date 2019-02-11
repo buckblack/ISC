@@ -40,9 +40,15 @@ namespace baitap1.Controllers
         [HttpPost]
         public async Task<ActionResult<Customer>> Post(Product product_item)
         {
-            _db.Products.Add(product_item);
-            await _db.SaveChangesAsync();
-            return CreatedAtAction("Get", new { id = product_item.Id, }, product_item);
+            var check = await _db.Products.FirstOrDefaultAsync(x => x.ProductID == product_item.ProductID);
+            if (check != null)
+                return BadRequest();
+            else
+            {
+                _db.Products.Add(product_item);
+                await _db.SaveChangesAsync();
+                return CreatedAtAction("Get", new { id = product_item.Id, }, product_item);
+            }
         }
 
         //update one
