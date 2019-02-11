@@ -38,7 +38,7 @@ namespace baitap1.Controllers
 
         //post
         [HttpPost]
-        public async Task<ActionResult<Customer>> Post(Product product_item)
+        public async Task<ActionResult<Product>> Post(Product product_item)
         {
             var check = await _db.Products.FirstOrDefaultAsync(x => x.ProductID == product_item.ProductID);
             if (check != null)
@@ -58,6 +58,9 @@ namespace baitap1.Controllers
             var item = await _db.Products.FindAsync(id);
             if (item == null)
                 return NotFound();
+            var check = await _db.Products.FirstOrDefaultAsync(x => x.ProductID == product_item.ProductID);
+            if (id!= product_item.Id && check!=null)
+                return BadRequest();
             item.ProductID = product_item.ProductID;
             item.Name = product_item.Name;
             _db.Update(item);
