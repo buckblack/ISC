@@ -1,0 +1,14 @@
+D:\ISC\back-end\codefirst\codefirst\bin\Debug\netcoreapp2.2\codefirst.deps.json
+D:\ISC\back-end\codefirst\codefirst\bin\Debug\netcoreapp2.2\codefirst.runtimeconfig.json
+D:\ISC\back-end\codefirst\codefirst\bin\Debug\netcoreapp2.2\codefirst.runtimeconfig.dev.json
+D:\ISC\back-end\codefirst\codefirst\bin\Debug\netcoreapp2.2\codefirst.dll
+D:\ISC\back-end\codefirst\codefirst\bin\Debug\netcoreapp2.2\codefirst.pdb
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.csprojAssemblyReference.cache
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.csproj.CoreCompileInputs.cache
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.RazorAssemblyInfo.cache
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.RazorAssemblyInfo.cs
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.AssemblyInfoInputs.cache
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.AssemblyInfo.cs
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.RazorTargetAssemblyInfo.cache
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.dll
+D:\ISC\back-end\codefirst\codefirst\obj\Debug\netcoreapp2.2\codefirst.pdb
