@@ -1,0 +1,14 @@
+D:\ISC\back-end\testmysql\testmysql\bin\Debug\netcoreapp2.2\testmysql.deps.json
+D:\ISC\back-end\testmysql\testmysql\bin\Debug\netcoreapp2.2\testmysql.runtimeconfig.json
+D:\ISC\back-end\testmysql\testmysql\bin\Debug\netcoreapp2.2\testmysql.runtimeconfig.dev.json
+D:\ISC\back-end\testmysql\testmysql\bin\Debug\netcoreapp2.2\testmysql.dll
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.csprojAssemblyReference.cache
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.csproj.CoreCompileInputs.cache
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.RazorAssemblyInfo.cache
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.RazorAssemblyInfo.cs
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.AssemblyInfoInputs.cache
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.AssemblyInfo.cs
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.RazorTargetAssemblyInfo.cache
+D:\ISC\back-end\testmysql\testmysql\bin\Debug\netcoreapp2.2\testmysql.pdb
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.dll
+D:\ISC\back-end\testmysql\testmysql\obj\Debug\netcoreapp2.2\testmysql.pdb
