@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using codefirst.Models;
 
 namespace codefirst.Models
 {
@@ -13,5 +14,6 @@ namespace codefirst.Models
 
         public DbSet<Major> Majors { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

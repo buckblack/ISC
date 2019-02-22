@@ -41,6 +41,9 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { MajorComponent } from './pages/major/major.component';
+import { StudentComponent } from './pages/student/student.component';
+import { ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -56,7 +59,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -64,7 +68,9 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MajorComponent,
+    StudentComponent
   ],
   providers: [],
   bootstrap: [ AppComponent ]

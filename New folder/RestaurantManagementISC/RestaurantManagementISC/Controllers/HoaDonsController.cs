@@ -1,0 +1,117 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RestaurantManagementISC.Models;
+
+namespace RestaurantManagementISC.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class HoaDonsController : ControllerBase
+    {
+        private readonly RestaurantContext _context;
+
+        public HoaDonsController(RestaurantContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/HoaDons
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<HoaDon>>> GetHoaDons()
+        {
+            return await _context.HoaDons.Select(x => new HoaDon
+            {
+                Id = x.Id,
+                ngaydat = x.ngaydat,
+                trangthai = x.trangthai,
+                ghichu = x.ghichu,
+                id_nhanvien = x.id_nhanvien,
+                id_ban = x.id_ban,
+                id_khachhang = x.id_khachhang,
+                NhanVien = x.NhanVien,
+                Ban = x.Ban,
+                tongtien = _context.ChiTietDatBans.Where(t=>t.id_hoadon==x.Id).Sum(t=>t.soluong*t.dongia),
+            }).ToListAsync();
+        }
+
+        // GET: api/HoaDons/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<HoaDon>> GetHoaDon(int id)
+        {
+            var hoaDon = await _context.HoaDons.FindAsync(id);
+
+            if (hoaDon == null)
+            {
+                return NotFound();
+            }
+
+            return hoaDon;
+        }
+
+        // PUT: api/HoaDons/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutHoaDon(int id, HoaDon hoaDon)
+        {
+            if (id != hoaDon.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(hoaDon).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!HoaDonExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/HoaDons
+        [HttpPost]
+        public async Task<ActionResult<HoaDon>> PostHoaDon(HoaDon hoaDon)
+        {
+            _context.HoaDons.Add(hoaDon);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetHoaDon", new { id = hoaDon.Id }, hoaDon);
+        }
+
+        // DELETE: api/HoaDons/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<HoaDon>> DeleteHoaDon(int id)
+        {
+            var hoaDon = await _context.HoaDons.FindAsync(id);
+            if (hoaDon == null)
+            {
+                return NotFound();
+            }
+
+            _context.HoaDons.Remove(hoaDon);
+            await _context.SaveChangesAsync();
+
+            return hoaDon;
+        }
+
+        private bool HoaDonExists(int id)
+        {
+            return _context.HoaDons.Any(e => e.Id == id);
+        }
+    }
+}

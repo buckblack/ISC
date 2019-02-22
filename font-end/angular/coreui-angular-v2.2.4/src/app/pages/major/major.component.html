@@ -1,0 +1,46 @@
+<div class="text-right mb-2">
+    <button class="btn btn-primary" (click)="lgModal.show()">Add</button>
+</div>
+
+ 
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Major</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="">Major name</label>
+          <input type="text" name="" id="" [(ngModel)]="major.name" class="form-control" placeholder="name">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-success" (click)="save()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class="">
+    <tr>
+      <th>Major name</th>
+      <th style="width: 70px;"></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of majors">
+        <td>{{row.name}}</td>
+        <td>
+          <a href="#"><i class="fa fa-edit"></i></a>
+          <a href="#"><i class="fa fa-remove text-danger"></i></a>
+        </td>
+      </tr>
+    </tbody>
+</table>

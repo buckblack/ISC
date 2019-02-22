@@ -1,0 +1,375 @@
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper p-0">
+    <div class="table-agile-info p-0">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Danh sách hàng hóa
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Hàng hóa</a>
+          <button class="btn btn-success my-2 my-sm-0 mr-3 ml-lg-auto" data-toggle="modal" data-target="#modal-add-new"><i
+              class="fa fa-plus"></i> Thêm mới</button>
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-align-justify"></i>
+            </button>
+            <div class="float-right">
+              <div class="dropdown-menu dropdown-menu-right bg-success float-right" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-item form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="check_masp" onclick="check_masp()">
+                  <label class="form-check-label">Mã sản phẩm</label>
+                </div>
+                <div class="dropdown-item form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="check_img" onclick="check_img()">
+                  <label class="form-check-label">Hình ảnh</label>
+                </div>
+                <div class="dropdown-item form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="check_status" onclick="check_status()">
+                  <label class="form-check-label">Tình trạng</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <table id="example" class="table table-striped table-bordered bg-light table-hover d-md-table table-responsive-sm ngcla"
+          style="width:100%">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th class="table_hinh d-none">Hình</th>
+              <th class="table_masp d-none">Mã hàng</th>
+              <th>Tên hàng</th>
+              <th>Giá bán</th>
+              <th>Loại hàng</th>
+              <th class="table_status d-none">Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(132,'/assets/images/1.png')"> -->
+            <tr *ngFor="let sanpham of sanphams; let i=index" ngfor data-toggle="modal" data-target="#modal-detai"
+              (click)="click_detail(sanpham.id)">
+              <td>{{i+1}}</td>
+              <td class="table_hinh d-none"><img src="/assets/images/sanpham/{{sanpham.hinhanh}}" style="width: 100px;"
+                  alt=""></td>
+              <td class="table_masp d-none">{{sanpham.id}}</td>
+              <td>{{sanpham.tenmonan}}</td>
+              <td>{{sanpham.dongia}}</td>
+              <td>{{sanpham.loaiMonAn.tenloai}}</td>
+              <td class="table_status d-none">{{sanpham.trangthai}}</td>
+            </tr>
+
+            <!-- <tr data-toggle="modal" data-target="#modal-detai" onclick="thongtinsp(456,'/assets/images/sanpham/banhcanhcua.jpg')">
+                                    <td class="table_hinh d-none">1</td>
+                                    <td>2</td>
+                                    <td>4</td>
+                                    <td>6</td>
+                                    <td>6</td>
+                                    <td>5</td>
+                                    <td class="table_status d-none">1</td>
+                                </tr> -->
+          </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- modal chi tiết -->
+        <div class="modal fade" id="modal-detai" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Chi tiết sản phẩm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="h3 text-primary">Sản phẩm ABC</div>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <img *ngIf="detail!=null" src="/assets/images/sanpham/{{detail.hinhanh}}" class="img-fluid w-100" alt="" data-toggle="modal"
+                      data-target="#modal-loadhinh">
+                  </div>
+                  <div class="col-sm-4">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td>Mã hàng hóa:</td>
+                          <td><strong *ngIf="detail!=null">{{detail.id}}</strong></td>
+                        </tr>
+                        <tr>
+                          <td>Tên hàng hóa:</td>
+                          <td><strong *ngIf="detail!=null">{{detail.tenmonan}}</strong></td>
+                        </tr>
+                        <tr>
+                          <td>Loại hàng:</td>
+                          <td><strong *ngIf="detail!=null">{{detail.loaiMonAn.tenloai}}</strong></td>
+                        </tr>
+                        <tr>
+                          <td>Giá bán:</td>
+                          <td><strong *ngIf="detail!=null">{{detail.dongia}}</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-sm-5">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td>Tình trạng:</td>
+                          <td><strong *ngIf="detail!=null">{{detail.trangthai}}</strong></td>
+                        </tr>
+                        <tr>
+                          <td>Mô tả:</td>
+                          <td *ngIf="detail!=null">{{detail.noidung}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="row float-right form-inline">
+                  <!--
+                                            <button class="btn btn-success mx-2" data-toggle="modal" data-target="#modal-update"
+                                                id="btn_capnhat" onclick="cap_nhat_san_pham()"><i class="fa fa-check-circle-o"></i>
+                                                Cập nhật</button>
+                                            <button class="btn btn-danger mx-2"><i class="fa fa-lock"></i> Ngừng kinh
+                                                doanh</button>
+                                            <button class="btn btn-danger mx-2"><i class=" fa fa-trash-o"></i> Xóa</button>
+                                            -->
+                  <ul class="nav nav-pills nav-fill m-3">
+                    <li class="nav-item" id="btn_capnhat" data-dismiss="modal" data-toggle="modal"
+                      data-target="#modal-update">
+                      <a class="nav-link btn btn-success btn-lg mx-2 mt-2" href="#"><i class="fa fa-check-circle-o"></i>
+                        Cập nhật</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link btn btn-danger btn-lg mx-2 mt-2" href="#"><i class="fa fa-lock"></i> Ngừng
+                        kinh doanh</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link btn btn-primary btn-lg mx-2 mt-2" href="#"><i class=" fa fa-trash-o"></i> Xóa</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" id="btn_cong_thuc" data-toggle="modal"
+                  data-target="#modal-thanhphan">Thành phần</button>
+                <button type="button" class="btn btn-secondary" id="btn_close_detai" data-dismiss="modal">Đóng</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- modal thêm mới -->
+        <div class="modal fade" id="modal-add-new" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Thêm sản phẩm mới</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Tên hàng</label>
+                  <input type="text" class="form-control" placeholder="Nhập tên sản phẩm mới">
+                </div>
+                <div class="form-group">
+                  <label>Loại hàng</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Đơn giá</label>
+                  <input type="number" class="form-control" placeholder="Nhập tên sản phẩm mới">
+                </div>
+                <div class="form-group">
+                  <label>Đơn vị tính</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Hình ảnh</label>
+                  <input type="file" class="form-control-file">
+                </div>
+
+                <label>Mô tả</label>
+                <ckeditor [(ngModel)]="cke_them" name="cke_them"></ckeditor>
+                <button (click)='show()'></button>
+
+
+              </div>
+              <div class="
+                                            modal-footer">
+                <button type="button" class="btn btn-primary">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Modal cập nhật-->
+        <div class="modal fade" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Cập nhật sản phẩm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Tên hàng</label>
+                  <input type="text" class="form-control" placeholder="Nhập tên sản phẩm mới" *ngIf="detail!=null" value="{{detail.tenmonan}}">
+                </div>
+                <div class="form-group">
+                  <label>Loại hàng</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Đơn giá</label>
+                  <input type="number" class="form-control" placeholder="Nhập tên sản phẩm mới">
+                </div>
+                <div class="form-group">
+                  <label>Đơn vị tính</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Hình ảnh</label>
+                  <input type="file" class="form-control-file">
+                </div>
+                <label>Mô tả</label>
+                <ckeditor [(ngModel)]="cke_them" name="cke_them"></ckeditor>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Thêm</button>
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- modal thành phần -->
+        <div class="modal fade" id="modal-thanhphan" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Thành phần món ăn</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group">
+                  <input class="form-control" type="search" placeholder="Search" aria-label="Search" required>
+                  <button class="btn btn-outline-success" type="button" id="btn_tp_search" onclick="timthanhphan()"><i
+                      class="fa fa-search"></i>
+                    Tìm</button>
+                </div>
+                <label for="">Thành phần:</label>
+                <select class="custom-select form-control-lg" size="5" id="sl_tp_up">
+
+                </select>
+
+                <div class="my-3 row justify-content-center">
+
+                  <input class="form-control w-25" id="tp_soluong" type="number" value="0">
+                  <button class="btn btn-outline-success" id="btn_tp_down" type="button" onclick="return uptodown()"><i
+                      class="fa fa-angle-down"></i></button>
+                  <button class="btn btn-outline-success" id="btn_tp_up" type="button" onclick="return downtoup()"><i
+                      class="fa fa-angle-up"></i></button>
+
+                </div>
+                <label for="">Thành phần hiện tại:</label>
+                <select class="custom-select form-control-lg" size="5" id="sl_tp_down">
+                  <option value="4">D: 500(gr)</option>
+                  <option value="5">E: 500(gr)</option>
+                  <option value="6">F: 500(gr)</option>
+                </select>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- madal load hình -->
+        <div class="modal fade" id="modal-loadhinh" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-full" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <img *ngIf="detail!=null" src="/assets/images/sanpham/{{detail.hinhanh}}" class="w-100">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- footer -->
+  <div class="footer">
+    <div class="wthree-copyright">
+      <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+    </div>
+  </div>
+  <!-- / footer -->
+</section>
+<!--main content end-->
