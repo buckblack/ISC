@@ -31,7 +31,7 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MonAn>> GetMonAn(int id)
         {
-            var monAn = await _context.MonAns.Include(x => x.LoaiMonAn).FirstOrDefaultAsync();
+            var monAn = await _context.MonAns.Where(x=>x.Id==id).Include(x => x.LoaiMonAn).FirstOrDefaultAsync();
 
             if (monAn == null)
             {
@@ -39,6 +39,13 @@ namespace RestaurantManagementISC.Controllers
             }
 
             return monAn;
+        }
+
+        //tìm
+        [HttpGet("tim")]
+        public async Task<ActionResult<IEnumerable<MonAn>>> GetTimNguyenLieu([FromQuery] string q)
+        {
+            return await _context.MonAns.Where(x => x.tenmonan.Contains(q)).ToListAsync();
         }
 
         // PUT: api/MonAn/5

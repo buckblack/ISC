@@ -11,11 +11,11 @@ namespace RestaurantManagementISC.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HoaDonsController : ControllerBase
+    public class HoaDonController : ControllerBase
     {
         private readonly RestaurantContext _context;
 
-        public HoaDonsController(RestaurantContext context)
+        public HoaDonController(RestaurantContext context)
         {
             _context = context;
         }
@@ -24,6 +24,7 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HoaDon>>> GetHoaDons()
         {
+            //return await _context.HoaDons.Include(x => x.NhanVien).Include(x => x.KhachHang).ToListAsync();
             return await _context.HoaDons.Select(x => new HoaDon
             {
                 Id = x.Id,
@@ -34,8 +35,9 @@ namespace RestaurantManagementISC.Controllers
                 id_ban = x.id_ban,
                 id_khachhang = x.id_khachhang,
                 NhanVien = x.NhanVien,
+                KhachHang=x.KhachHang,
                 Ban = x.Ban,
-                tongtien = _context.ChiTietDatBans.Where(t=>t.id_hoadon==x.Id).Sum(t=>t.soluong*t.dongia),
+                tongtien = _context.ChiTietDatBans.Where(t => t.id_hoadon == x.Id).Sum(t => t.soluong * t.dongia),
             }).ToListAsync();
         }
 
@@ -47,10 +49,18 @@ namespace RestaurantManagementISC.Controllers
 
             if (hoaDon == null)
             {
-                return NotFound();
+                return new HoaDon { Id = 0 };
             }
 
             return hoaDon;
+        }
+
+        // GET: tổng tiền
+        [HttpGet("tongtien/{idHD}")]
+        public async Task<ActionResult<double>> GetTongtien(int idHD)
+        {
+            var hoaDon = await _context.HoaDons.FindAsync(idHD);
+            return _context.ChiTietDatBans.Where(t => t.id_hoadon == idHD).Sum(t => t.soluong * t.dongia);
         }
 
         // PUT: api/HoaDons/5

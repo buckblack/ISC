@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,12 @@ namespace RestaurantManagementISC.Controllers
         public async Task<ActionResult<IEnumerable<CongThuc>>> GetCongThucs()
         {
             return await _context.CongThucs.ToListAsync();
+        }
+
+        [HttpGet("monan/{idMonan}")]
+        public async Task<ActionResult<IEnumerable<CongThuc>>> GetCongThucMonan(int idMonan)
+        {
+            return await _context.CongThucs.Where(x=>x.id_monan==idMonan).Include(x=>x.NguyenLieu).ToListAsync();
         }
 
         // GET: api/CongThuc/5
@@ -75,7 +82,16 @@ namespace RestaurantManagementISC.Controllers
         [HttpPost]
         public async Task<ActionResult<CongThuc>> PostCongThuc(CongThuc congThuc)
         {
-            _context.CongThucs.Add(congThuc);
+            var ct = await _context.CongThucs.Where(x => x.id_monan == congThuc.id_monan && x.id_nguyenlieu == congThuc.id_nguyenlieu).FirstOrDefaultAsync();
+            if (ct == null)
+            {
+                _context.CongThucs.Add(congThuc);
+            }
+            else
+            {
+                ct.soluong = congThuc.soluong;
+                _context.CongThucs.Update(ct);
+            }
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCongThuc", new { id = congThuc.Id }, congThuc);

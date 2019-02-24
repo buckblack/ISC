@@ -41,34 +41,32 @@ namespace RestaurantManagementISC.Controllers
             return ban;
         }
 
+        // GET: lấy hóa đơn của bàn
+        [HttpGet("hoadon/{idban}")]
+        public async Task<ActionResult<int>> GetHoaDon(int idban)
+        {
+            var ban = await _context.Bans.FindAsync(idban);
+
+            if (ban.hoadonphucvu == null)
+            {
+                return _context.HoaDons.Max(x => x.Id) + 1;
+            }
+
+            return ban.hoadonphucvu;
+        }
+
         // PUT: api/Bans/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBan(int id, Ban ban)
+        public async Task<IActionResult> PutBan(Ban ban, int id)
         {
-            if (id != ban.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(ban).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BanExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var b = await _context.Bans.FindAsync(id);
+            if (b == null)
+                return NotFound();
+            b.trangthai = ban.trangthai;
+            b.hoadonphucvu = ban.hoadonphucvu;
+            _context.Bans.Update(b);
+            await _context.SaveChangesAsync();
+            return Ok(b);
         }
 
         // POST: api/Bans

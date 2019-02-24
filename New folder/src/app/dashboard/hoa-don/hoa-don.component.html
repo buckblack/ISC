@@ -48,20 +48,25 @@
                                     <th>Ngày</th>
                                     <th>Tổng tiền</th>
                                     <th class="table_ban d-none">Bàn</th>
-                                    <th class="table_ghichu d-none">Ghi chú</th>
                                     <th class="table_status d-none">Trạng thái</th>
+                                    <th class="table_ghichu d-none">Ghi chú</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-toggle="modal" data-target="#modal-detai">
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td class="table_ban d-none">5</td>
+                                <tr *ngFor="let hoadon of hoadons" data-toggle="modal" data-target="#modal-detai" (click)="click_detail(hoadon.id)"> 
+                                    <td>{{hoadon.id}}</td>
+                                    <td>{{hoadon.khachHang.tenkhachhang}}</td>
+                                    <td>{{hoadon.nhanVien.tennhanvien}}</td>
+                                    <td>{{hoadon.ngaydat}}</td>
+                                    <td>{{hoadon.tongtien}}</td>
+                                    <td class="table_ban d-none">{{hoadon.ban.soban}}</td>
+                                    <ng-container *ngIf="hoadon.trangthai===true; else elseTemplate">
+                                        <td class="table_status d-none">Đã thanh toán</td>
+                                    </ng-container>
+                                    <ng-template #elseTemplate>
+                                        <td class="table_status d-none">Chưa thanh toán</td>
+                                    </ng-template>
                                     <td class="table_ghichu d-none">1</td>
-                                    <td class="table_status d-none">1</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -121,18 +126,18 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>1</td>
-                                                            <td>2</td>
+                                                        <tr *ngFor="let chitiet of detail">
+                                                            <td>{{chitiet.monAn.id}}</td>
+                                                            <td>{{chitiet.monAn.tenmonan}}</td>
+                                                            <td>{{chitiet.soluong}}</td>
                                                             <td>3</td>
                                                         </tr>
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td>5</td>
                                                             <td>3</td>
                                                             <td>2</td>
                                                             <td>9</td>
-                                                        </tr>
+                                                        </tr> -->
 
                                                     </tbody>
                                                 </table>

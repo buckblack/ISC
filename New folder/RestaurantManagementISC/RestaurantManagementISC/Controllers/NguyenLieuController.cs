@@ -81,6 +81,13 @@ namespace RestaurantManagementISC.Controllers
             return CreatedAtAction("GetNguyenLieu", new { id = nguyenLieu.Id }, nguyenLieu);
         }
 
+        //tìm
+        [HttpGet("tim")]
+        public async Task<ActionResult<IEnumerable<NguyenLieu>>> PostTimNguyenLieu([FromQuery] string q)
+        {
+            return await _context.NguyenLieus.Where(x => x.tennguyenlieu.Contains(q)).ToListAsync();
+        }
+
         // DELETE: api/NguyenLieu/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<NguyenLieu>> DeleteNguyenLieu(int id)

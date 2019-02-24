@@ -18,10 +18,6 @@ namespace RestaurantManagementISC
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
 
         public Startup(IHostingEnvironment env)
         {
@@ -46,11 +42,13 @@ namespace RestaurantManagementISC
                 });
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAllHeaders",
+                /*options.AddPolicy("AllowAllHeaders",
                     builder =>
                     {
                         builder.WithOrigins("*").AllowAnyHeader();
-                    });
+                    });*/
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("*").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
             });
         }
 
@@ -66,7 +64,7 @@ namespace RestaurantManagementISC
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseCors("AllowAllHeaders");
+            app.UseCors("AllowSpecificOrigin");
             app.UseHttpsRedirection();
             app.UseMvc();
         }

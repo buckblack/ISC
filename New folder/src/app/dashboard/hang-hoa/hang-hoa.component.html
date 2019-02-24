@@ -172,7 +172,7 @@
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal" id="btn_cong_thuc" data-toggle="modal"
-                  data-target="#modal-thanhphan">Thành phần</button>
+                  data-target="#modal-thanhphan" (click)="getThanhphan(tp_idmonan)">Thành phần</button>
                 <button type="button" class="btn btn-secondary" id="btn_close_detai" data-dismiss="modal">Đóng</button>
 
               </div>
@@ -315,30 +315,28 @@
               </div>
               <div class="modal-body">
                 <div class="input-group">
-                  <input class="form-control" type="search" placeholder="Search" aria-label="Search" required>
-                  <button class="btn btn-outline-success" type="button" id="btn_tp_search" onclick="timthanhphan()"><i
+                  <input class="form-control" [(ngModel)]="ip_tukhoa" type="search" placeholder="Search" aria-label="Search" required>
+                  <button class="btn btn-outline-success" type="button" id="btn_tp_search" (click)="TimNguyenLieu(ip_tukhoa)"><i
                       class="fa fa-search"></i>
                     Tìm</button>
                 </div>
                 <label for="">Thành phần:</label>
-                <select class="custom-select form-control-lg" size="5" id="sl_tp_up">
-
+                <select class="custom-select form-control-lg" size="5" id="sl_tp_up" [(ngModel)]="sl_tp_up">
+                  <option *ngFor="let row of nguyenlieus" value="{{row.id}}">{{row.tennguyenlieu}}: ({{row.donvitinh}})</option>
                 </select>
 
                 <div class="my-3 row justify-content-center">
 
-                  <input class="form-control w-25" id="tp_soluong" type="number" value="0">
-                  <button class="btn btn-outline-success" id="btn_tp_down" type="button" onclick="return uptodown()"><i
+                  <input class="form-control w-25" id="tp_soluong" [(ngModel)]="ip_tp_soluong" type="number" value="0">
+                  <button class="btn btn-outline-success" id="btn_tp_down" type="button" (click)="tp_uptodown()"><i
                       class="fa fa-angle-down"></i></button>
-                  <button class="btn btn-outline-success" id="btn_tp_up" type="button" onclick="return downtoup()"><i
+                  <button class="btn btn-outline-success" id="btn_tp_up" type="button" (click)="tp_downtoup()"><i
                       class="fa fa-angle-up"></i></button>
 
                 </div>
                 <label for="">Thành phần hiện tại:</label>
-                <select class="custom-select form-control-lg" size="5" id="sl_tp_down">
-                  <option value="4">D: 500(gr)</option>
-                  <option value="5">E: 500(gr)</option>
-                  <option value="6">F: 500(gr)</option>
+                <select class="custom-select form-control-lg" size="5" id="sl_tp_down" [(ngModel)]="sl_tp_down">
+                  <option *ngFor="let row of thanhphans" value="{{row.id}}">{{row.nguyenLieu.tennguyenlieu}}: {{row.soluong}} ({{row.nguyenLieu.donvitinh}})</option>
                 </select>
 
               </div>

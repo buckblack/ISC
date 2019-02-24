@@ -38,6 +38,5 @@ namespace RestaurantManagementISC.Models
 
         [NotMapped]
         public double tongtien { get; set; }
-
     }
 }
