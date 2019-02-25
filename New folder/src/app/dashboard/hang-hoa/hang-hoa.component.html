@@ -101,7 +101,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="h3 text-primary">Sản phẩm ABC</div>
+                <div class="h3 text-primary">Hình ảnh</div>
                 <div class="row">
                   <div class="col-sm-3">
                     <img *ngIf="detail!=null" src="/assets/images/sanpham/{{detail.hinhanh}}" class="img-fluid w-100" alt="" data-toggle="modal"
@@ -138,7 +138,7 @@
                         </tr>
                         <tr>
                           <td>Mô tả:</td>
-                          <td *ngIf="detail!=null">{{detail.noidung}}</td>
+                          <td *ngIf="detail!=null" [innerHTML]="detail.noidung"></td>
                         </tr>
                       </tbody>
                     </table>
@@ -227,7 +227,14 @@
                 </div>
 
                 <label>Mô tả</label>
-                <ckeditor [(ngModel)]="cke_them" name="cke_them"></ckeditor>
+                <app-ck [(ngModel)]="cke_them" ngDefaultControl></app-ck>
+                <ckeditor [config]="{ toolbarGroups: [
+                  { name: 'document',	   groups: [ 'mode', 'document' ] },
+                   { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+                   '/',
+                   { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                   { name: 'links' }
+                ] }" [(ngModel)]="cke_them" name="cke_them"></ckeditor>
                 <button (click)='show()'></button>
 
 

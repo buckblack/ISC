@@ -132,18 +132,17 @@ export class BanHangComponent implements OnInit {
 
   }
 
-  doi_so_luong_chi_tiet(id_chitiet) {
+  async doi_so_luong_chi_tiet(id_chitiet) {
     const sl = (<HTMLInputElement>document.getElementById('tp_soluong_' + id_chitiet)).value;
     const data = {
       soluong: sl,
     };
-    this.banhangService.UpdateSoluong(id_chitiet, data).subscribe(kq => {
-      this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result2 => {
-        this.chitietHDs = result2;
-      });
-      this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result3 => {
-        this.tongtienHD = Number(result3);
-      });
+    this.banhangService.UpdateSoluong(id_chitiet, data).subscribe();
+    await this.hoadonService.getHoaDon(Number(this.id_hoadon)).subscribe(result2 => {
+      this.chitietHDs = result2;
+    });
+    await this.hoadonService.getTongTienHD(Number(this.id_hoadon)).subscribe(result3 => {
+      this.tongtienHD = Number(result3);
     });
   }
 }

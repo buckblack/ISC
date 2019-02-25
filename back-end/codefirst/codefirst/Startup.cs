@@ -12,14 +12,23 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using codefirst.Models.utits;
 
 namespace codefirst
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{ env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -28,7 +37,29 @@ namespace codefirst
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Db>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    RequireExpirationTime = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = "https://localhost:44338",
+                    ValidAudience = "https://localhost:44338",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Helper.AppKey))
+                };
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                });
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +76,8 @@ namespace codefirst
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("AllowAllHeaders");
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

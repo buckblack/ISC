@@ -10,7 +10,7 @@ import { HangHoaService } from 'src/app/services/hang-hoa.service';
   styleUrls: ['./hang-hoa.component.css']
 })
 export class HangHoaComponent implements OnInit {
-  cke_them = ``;
+  cke_them = 'aaaaa';
   tp_idmonan: number;
   sl_tp_up: number;
   sl_tp_down: number;

@@ -9,6 +9,11 @@ using codefirst.Models;
 using codefirst.Models.utits;
 using codefirst.Models.request;
 using codefirst.Models.respone;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace codefirst.Controllers
 {
@@ -67,12 +72,25 @@ namespace codefirst.Controllers
                 var user = await _context.Users.Where(x => x.UserName == resquest.UserName && x.Password == Helper.GenHash(resquest.PassWord)).AsNoTracking().FirstOrDefaultAsync();
                 if(user!=null)
                 {
+                    //generate token
+                    var clainmData = new[] { new Claim(ClaimTypes.Name, resquest.UserName) };
+                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Helper.AppKey));
+                    var singingCredential = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                    var token = new JwtSecurityToken(
+                        issuer: Helper.issuer,
+                        audience: Helper.issuer,
+                        expires: DateTime.Now.AddMinutes(30),
+                        claims: clainmData,
+                        signingCredentials: singingCredential
+                    );
+                    var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
                     return new BaseRespone
                     {
                         Data = new LoginRespone {
                             UserID = user.UserId,
                             UserName = user.FullName,
-                            Token = "",
+                            Token = "Bearer "+tokenString,
                         },
                     };
                 }

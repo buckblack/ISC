@@ -13,5 +13,8 @@ namespace codefirst.Models.utits
         {
             return string.Join("", new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(input)).Select(x => x.ToString("X2")).ToArray());
         }
+
+        public readonly static string AppKey = "dyxdgj4f54a5Z45l4u5o4l54545fi4o56s45457d8d4215g4fddsgbl";
+        public readonly static string issuer = "https://localhost:44338";
     }
 }

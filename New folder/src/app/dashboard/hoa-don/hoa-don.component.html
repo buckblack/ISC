@@ -48,8 +48,8 @@
                                     <th>Ngày</th>
                                     <th>Tổng tiền</th>
                                     <th class="table_ban d-none">Bàn</th>
-                                    <th class="table_status d-none">Trạng thái</th>
                                     <th class="table_ghichu d-none">Ghi chú</th>
+                                    <th class="table_status d-none">Trạng thái</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,14 +59,9 @@
                                     <td>{{hoadon.nhanVien.tennhanvien}}</td>
                                     <td>{{hoadon.ngaydat}}</td>
                                     <td>{{hoadon.tongtien}}</td>
-                                    <td class="table_ban d-none">{{hoadon.ban.soban}}</td>
-                                    <ng-container *ngIf="hoadon.trangthai===true; else elseTemplate">
-                                        <td class="table_status d-none">Đã thanh toán</td>
-                                    </ng-container>
-                                    <ng-template #elseTemplate>
-                                        <td class="table_status d-none">Chưa thanh toán</td>
-                                    </ng-template>
+                                    <td class="table_ban d-none">5</td>
                                     <td class="table_ghichu d-none">1</td>
+                                    <td class="table_status d-none">1</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -100,7 +95,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row w-100">
-                                            <div class="h3 text-primary mr-auto">Hóa đơn 123</div>
+                                            <div class="h3 text-primary mr-auto">Hóa đơn {{ hoadonId }}</div>
                                             <div class="h3 text-danger">Tổng tiền:288,000 VNĐ</div>
                                         </div>
                                         <div class="row w-100">

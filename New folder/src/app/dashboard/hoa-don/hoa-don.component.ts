@@ -10,6 +10,7 @@ import { HoaDonList, HoaDonInfo, HoaDonService, ChiTietHoaDonInfo } from 'src/ap
 export class HoaDonComponent implements OnInit {
   hoadons: HoaDonList;
   detail: ChiTietHoaDonInfo;
+  hoadonId: number;
   constructor(private titleService: Title, private hoadonService: HoaDonService) { }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class HoaDonComponent implements OnInit {
   click_detail(id) {
     this.hoadonService.getHoaDon(id).subscribe(result => {
       this.detail = result;
+      this.hoadonId = this.detail[0].hoaDon.id;
     });
   }
 }
