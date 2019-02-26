@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -11,7 +11,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
-
+import { CookieService } from 'ngx-cookie-service';
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -44,6 +44,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { MajorComponent } from './pages/major/major.component';
 import { StudentComponent } from './pages/student/student.component';
 import { ModalModule } from 'ngx-bootstrap';
+import { AuthGuard } from './auth.guard';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 @NgModule({
   imports: [
@@ -60,7 +62,7 @@ import { ModalModule } from 'ngx-bootstrap';
     TabsModule.forRoot(),
     ChartsModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
   ],
   declarations: [
     AppComponent,
@@ -72,7 +74,15 @@ import { ModalModule } from 'ngx-bootstrap';
     MajorComponent,
     StudentComponent
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    CookieService,
+    AuthGuard
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

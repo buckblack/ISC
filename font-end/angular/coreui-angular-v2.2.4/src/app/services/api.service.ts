@@ -10,6 +10,7 @@ export class ApiService {
   apiUrl = {
     login: this.baseUrl + 'login.php',
     majors: this.baseUrl + 'majors.php',
-    major: this.baseUrl + 'major.php'
+    major: this.baseUrl + 'major.php',
+    readers: this.baseUrl + 'readers.php',
   };
 }

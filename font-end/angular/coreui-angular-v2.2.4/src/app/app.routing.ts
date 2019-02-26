@@ -11,6 +11,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { MajorComponent } from './pages/major/major.component';
 import { StudentComponent } from './pages/student/student.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -32,12 +33,12 @@ export const routes: Routes = [
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
-    },
+    }, canActivate: [AuthGuard],
     children: [
       {
         path: 'major',
         component: MajorComponent,
-        data: {title: 'Major'}
+        data: { title: 'Major' }
       },
       {
         path: 'dashboard',
@@ -46,7 +47,7 @@ export const routes: Routes = [
       {
         path: 'student',
         component: StudentComponent,
-        data: {title: 'Student'}
+        data: { title: 'Student' }
       }
     ]
   },
@@ -54,7 +55,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReaderService } from '../../services/reader.service';
 
 @Component({
   selector: 'app-student',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readerService: ReaderService) { }
 
   ngOnInit() {
+    this.readerService.getAll().subscribe(result => {
+      console.log(result);
+    });
   }
 
 }
