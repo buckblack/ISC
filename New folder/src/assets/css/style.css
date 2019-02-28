@@ -3193,6 +3193,10 @@ input.hoa-don
     min-width: 95%;
     margin: auto;
 }
+.disabled a {
+    pointer-events:none; 
+    opacity:0.6;
+ }
 
 
 

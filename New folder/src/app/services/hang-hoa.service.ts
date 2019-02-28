@@ -10,6 +10,7 @@ export interface MonanInfo {
   hinhanh: string;
   trangthai: string;
   noidung: string;
+  id_loaimonan: number;
   loaiMonAn: LoaimonanInfo;
 }
 export interface LoaimonanInfo {
@@ -21,10 +22,14 @@ export interface MonanList {
   monan: MonanInfo;
 }
 
+export interface ListLoaimonanInfo {
+  loaimonan: LoaimonanInfo;
+}
+
 export interface ThanhPhan {
   id: number;
   soluong: number;
-  nguyenLieu: NguyenLieu[]
+  nguyenLieu: NguyenLieu[];
 }
 export interface NguyenLieu {
   id: number;
@@ -64,4 +69,12 @@ export class HangHoaService {
     return this.http.post<ThanhPhan>(this.api.apiUrl.congthuc, param);
   }
 
+  public ThemHangHoa(param): Observable<MonanInfo> {
+    console.log(param);
+    return this.http.post<MonanInfo>(this.api.apiUrl.monan, param) ;
+  }
+
+  public getAllLoaiHangHoa(): Observable<ListLoaimonanInfo> {
+    return this.http.get<ListLoaimonanInfo>(this.api.apiUrl.loaimonan);
+  }
 }

@@ -3,9 +3,16 @@ import { ApiService } from './api.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 export interface LoginRespone {
+  errorCode: number;
+  message: string;
+  data: LoginData;
+}
+export interface LoginData {
   id: number;
   trangthai: boolean;
   ten: string;
+  ho: string;
+  token: '';
 }
 @Injectable({
   providedIn: 'root'

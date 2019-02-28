@@ -11,7 +11,7 @@
                                             href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">PHÒNG
                                             BÀN</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" id="thucdon">
                                         <a class="nav-link text-white" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
                                             role="tab" aria-controls="pills-profile" aria-selected="false">THỰC ĐƠN</a>
                                     </li>
@@ -39,7 +39,7 @@
                                               </nav>
                                         <div class="phong-ban p-2 width-auto">
                                             <div class="row m-0">
-                                                <div *ngFor="let ban of bans" class="card text-center border-0 bg-light px-4" style="width: 100px;" (click)="chon_ban(ban.id,ban.soban)">
+                                                <div data-toggle="tab" href="#pills-profile" *ngFor="let ban of bans" id="maban_{{ban.id}}" class="card text-center border-0 bg-light px-4" style="width: 100px;" (click)="chon_ban(ban.id,ban.soban)">
                                                     <ng-container *ngIf="ban.hoadonphucvu==undefine; then thenTemplate; else elseTemplate"></ng-container>
                                                     <ng-template #thenTemplate>
                                                         <img class="card-img-top px-3" src="/assets/images/chair.png" alt="Card image cap"  id="ban_{{ban.id}}">
@@ -95,7 +95,7 @@
                                 </ul>
                             </section>
                             <section class="p-2">
-                                <button class="btn btn-control disabled"><i class="fa fa-street-view"></i><a href="#">Bàn {{soban}} / Lầu 1</a></button>
+                                <button class="btn btn-control disabled"><i class="fa fa-street-view" *ngIf="expression"></i><a href="#">Bàn {{soban}} / Lầu 1</a></button>
                                 <table class="table table-hover table-striped table-responsive d-lg-table">
                                     <tbody id="ds_mon">
                                         <tr *ngFor="let row of chitietHDs; let i=index" id="tr_gio_hang_1">
@@ -114,10 +114,10 @@
                                 <hr/>
                                 <div class="text-right mb-3">Tổng tiền: <strong>{{(tongtienHD).toLocaleString('en-GB')}} VNĐ</strong></div>
                                 <ul class="nav nav-pills nav-fill m-3">
-                                    <li class="nav-item">
+                                    <li class="nav-item disabled" id='btn_thanhtoan' (click)="showThanhtoan()">
                                         <a class="nav-link btn btn-success btn-lg mx-2 mt-2 text-white">Thanh Toán</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item disabled" id="btn_daphucvu" (click)="showNgungphucvu()">
                                         <a class="nav-link btn btn-danger btn-lg mx-2 mt-2 text-white">Đã phục vụ xong</a>
                                     </li>
                                     <li class="nav-item">
@@ -133,4 +133,72 @@
             </section>
         </section>
         <!--main content end-->
+        <!-- Modal -->
+        <div bsModal #modalthanhtoan="bs-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Xác nhận thanh toán</h5>
+                            <button type="button" class="close" (click)="modalthanhtoan.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                          <label for="">Ghi chú (nếu có): </label>
+                          <input class="form-control" id="ghi_chu" placeholder="Nhập ghi chú nếu có" required>
+                        </div>
+                        <div id="noidungHD">
+                            <h2 class="text-center">TÊN CỬA HÀNG</h2>
+                            <P class="text-center">địa chỉ</P>
+                            <h4 class="text-center">Phiếu thanh toán</h4>
+                            <h5>Bàn: {{soban}}</h5>
+                            <h5>Hóa đơn: {{id_hoadon}}</h5>
+                            <table class="table table-sm table-striped table-bordered">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th>Tên món</th>
+                                        <th>SL</th>
+                                        <th>ĐG</th>
+                                        <th>T.Tiền</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let row of chitietHDs">
+                                            <td>{{row.monAn.tenmonan}}</td>
+                                            <td>{{row.soluong}}</td>
+                                            <td>{{(row.dongia).toLocaleString('en-GB')}}</td>
+                                            <td>{{(row.dongia*row.soluong).toLocaleString('en-GB')}}</td>
+                                        </tr>
+                                    </tbody>
+                            </table>
+                            <h4><span>Tổng tiền:</span><span class="float-right">{{(tongtienHD).toLocaleString('en-GB')}} VNĐ</span></h4>
+                            <p>Chúc quí khách vui vẻ, hen gặp lại!</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer" >
+                        <button type="button" class="btn btn-secondary" (click)="modalthanhtoan.hide()">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="printHD()">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div bsModal #modalphucvu="bs-modal" class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Xác nhận ngưng phục vụ</h5>
+                            <button type="button" class="close" (click)="modalphucvu.hide()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="modalphucvu.hide()">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="ngungphucvu()">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 

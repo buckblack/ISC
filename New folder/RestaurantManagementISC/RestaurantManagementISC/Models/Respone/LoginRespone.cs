@@ -10,5 +10,7 @@ namespace RestaurantManagementISC.Models
         public int id { get; set; }
         public bool trangthai { get; set; }
         public string ten { get; set; }
+        public string ho { get; set; }
+        public string token { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+import { Student2Component } from './pages/student2/student2/student2.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -33,7 +34,8 @@ export const routes: Routes = [
     component: DefaultLayoutComponent,
     data: {
       title: 'Home'
-    }, canActivate: [AuthGuard],
+    }, 
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'major',
@@ -48,6 +50,11 @@ export const routes: Routes = [
         path: 'student',
         component: StudentComponent,
         data: { title: 'Student' }
+      },
+      {
+        path: 'student2',
+        component: Student2Component,
+        data: { title: 'Student2' }
       }
     ]
   },

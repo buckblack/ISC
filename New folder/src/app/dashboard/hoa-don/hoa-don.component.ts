@@ -10,7 +10,12 @@ import { HoaDonList, HoaDonInfo, HoaDonService, ChiTietHoaDonInfo } from 'src/ap
 export class HoaDonComponent implements OnInit {
   hoadons: HoaDonList;
   detail: ChiTietHoaDonInfo;
-  hoadonId: number;
+  id_hoadon: number;
+  nhanvien: string;
+  ngay: Date;
+  tinhtrang: boolean;
+  tongtienHD: number = 0;
+  hoadonIf: HoaDonInfo;
   constructor(private titleService: Title, private hoadonService: HoaDonService) { }
 
   ngOnInit() {
@@ -21,8 +26,18 @@ export class HoaDonComponent implements OnInit {
   }
   click_detail(id) {
     this.hoadonService.getHoaDon(id).subscribe(result => {
+      this.hoadonService.getTongTienHD(id).subscribe(result2 => {
+        this.tongtienHD = Number(result2);
+      });
+      this.hoadonService.getIdHoadon(id).subscribe(result1 => {
+        //console.log(result1);
+        this.hoadonIf = result1;
+        //this.id_hoadon = result1.id;
+        //this.nhanvien = (result1.nhanVien.honhanvien) + ' ' + (result1.nhanVien.tennhanvien);
+        //this.ngay = result1.ngaydat;
+        //this.tinhtrang = result1.trangthai;
+      });
       this.detail = result;
-      this.hoadonId = this.detail[0].hoaDon.id;
     });
   }
 }

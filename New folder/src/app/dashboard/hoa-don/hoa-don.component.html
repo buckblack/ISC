@@ -48,8 +48,8 @@
                                     <th>Ngày</th>
                                     <th>Tổng tiền</th>
                                     <th class="table_ban d-none">Bàn</th>
-                                    <th class="table_ghichu d-none">Ghi chú</th>
                                     <th class="table_status d-none">Trạng thái</th>
+                                    <th class="table_ghichu d-none">Ghi chú</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,10 +58,10 @@
                                     <td>{{hoadon.khachHang.tenkhachhang}}</td>
                                     <td>{{hoadon.nhanVien.tennhanvien}}</td>
                                     <td>{{hoadon.ngaydat}}</td>
-                                    <td>{{hoadon.tongtien}}</td>
-                                    <td class="table_ban d-none">5</td>
-                                    <td class="table_ghichu d-none">1</td>
-                                    <td class="table_status d-none">1</td>
+                                    <td>{{(hoadon.tongtien).toLocaleString('en-GB')}}</td>
+                                    <td class="table_ban d-none">{{hoadon.ban.id}}</td>
+                                    <td class="table_status d-none">{{hoadon.trangthai === true ? 'đã thanh toán' : 'chưa thanh toán'}}</td>
+                                    <td class="table_ghichu d-none">{{hoadon.ghichu}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -95,16 +95,16 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row w-100">
-                                            <div class="h3 text-primary mr-auto">Hóa đơn {{ hoadonId }}</div>
-                                            <div class="h3 text-danger">Tổng tiền:288,000 VNĐ</div>
+                                            <div class="h3 text-primary mr-auto" *ngIf="hoadonIf!==undefined">Hóa đơn {{hoadonIf.id}}</div>
+                                            <div class="h3 text-danger">Tổng tiền:{{(tongtienHD).toLocaleString('en-GB')}} VNĐ</div>
                                         </div>
                                         <div class="row w-100">
-                                                <div class="h6 mr-auto">Người lập: NVA</div>
-                                                <div class="h6">Ngày lập: 1-1-2019</div>
+                                                <div class="h6 mr-auto" *ngIf="hoadonIf!==undefined">Người lập: {{(hoadonIf.nhanVien.honhanvien) + ' ' + (hoadonIf.nhanVien.tennhanvien)}}</div>
+                                                <div class="h6" *ngIf="hoadonIf!==undefined">Ngày lập: {{hoadonIf.ngaydat}}</div>
                                             </div>
                                         <div class="row w-100">
                                                 <div class="h6 mr-auto">Khách hàng: Khách lẻ</div>
-                                                <div class="h6">Tình trạng:Đã thanh toán</div>
+                                                <div class="h6" *ngIf="hoadonIf!==undefined">Tình trạng:{{hoadonIf.tinhtrang === true ? 'đã thanh toán' : 'chưa thanh toán'}}</div>
                                             </div>
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -117,6 +117,7 @@
                                                             <th>Mã sản phẩm</th>
                                                             <th>Tên sản phẩm</th>
                                                             <th>Số lượng</th>
+                                                            <th>Đơn giá</th>
                                                             <th>Thành tiền</th>
                                                         </tr>
                                                     </thead>
@@ -125,7 +126,8 @@
                                                             <td>{{chitiet.monAn.id}}</td>
                                                             <td>{{chitiet.monAn.tenmonan}}</td>
                                                             <td>{{chitiet.soluong}}</td>
-                                                            <td>3</td>
+                                                            <td>{{(chitiet.dongia).toLocaleString('en-GB')}}</td>
+                                                            <td>{{(chitiet.soluong*chitiet.dongia).toLocaleString('en-GB')}}</td>
                                                         </tr>
                                                         <!-- <tr>
                                                             <td>5</td>

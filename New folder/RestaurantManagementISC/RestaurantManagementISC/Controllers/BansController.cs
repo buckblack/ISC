@@ -45,14 +45,21 @@ namespace RestaurantManagementISC.Controllers
         [HttpGet("hoadon/{idban}")]
         public async Task<ActionResult<int>> GetHoaDon(int idban)
         {
-            var ban = await _context.Bans.FindAsync(idban);
-
-            if (ban.hoadonphucvu == null)
+            try
             {
-                return _context.HoaDons.Max(x => x.Id) + 1;
-            }
+                var ban = await _context.Bans.FindAsync(idban);
 
-            return ban.hoadonphucvu;
+                if (ban.hoadonphucvu == null)
+                {
+                    return _context.HoaDons.Max(x => x.Id) + 1;
+                }
+
+                return ban.hoadonphucvu;
+            }
+            catch //Chạy lần đầu tiên
+            {
+                return 1;
+            }
         }
 
         // PUT: api/Bans/5

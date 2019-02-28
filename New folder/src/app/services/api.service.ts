@@ -8,6 +8,7 @@ export class ApiService {
   apiUrl = {
     login: this.baseUrl + 'nhanvien/login',
     monan: this.baseUrl + 'monan',
+    loaimonan: this.baseUrl + 'loaimonan',
     hoadon: this.baseUrl + 'hoadon',
     chitietdatban: this.baseUrl + 'chitietdatban',
     congthucMonan: this.baseUrl + 'congthuc/monan/',
@@ -16,6 +17,6 @@ export class ApiService {
     congthuc: this.baseUrl + 'congthuc/',
     ban: this.baseUrl + 'bans',
     timmonan: this.baseUrl + 'monan/tim?q=',
-    timhoadon_phucvu: this.baseUrl + 'bans/hoadon',
+    timhoadon_phucvu: this.baseUrl + 'bans/hoadon'
   };
 }
