@@ -20,7 +20,13 @@ export class BanHangService {
     return this.http.post(this.api.apiUrl.chitietdatban, param);
   }
 
+
   public UpdateSoluong(id, param) {
     return this.http.put(this.api.apiUrl.chitietdatban + '/' + id, param);
   }
+
+  public ThemChiTietDaCo(param) {
+    return this.http.put(this.api.apiUrl.chitietdatban + '/daco', param);
+  }
+
 }

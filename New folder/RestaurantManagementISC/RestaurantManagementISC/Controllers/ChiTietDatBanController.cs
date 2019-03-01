@@ -60,12 +60,24 @@ namespace RestaurantManagementISC.Controllers
 
         // PUT: api/ChiTietDatBan/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutChiTietDatBan(int id, ChiTietDatBan chiTietDatBan)
+        public async Task<IActionResult> PutChiTietDatBanMoi(int id, ChiTietDatBan chiTietDatBan)
         {
             var ct = await _context.ChiTietDatBans.FindAsync(id);
             if (ct == null)
                 return NotFound();
             ct.soluong = chiTietDatBan.soluong;
+            _context.ChiTietDatBans.Update(ct);
+            await _context.SaveChangesAsync();
+            return Ok(ct);
+        }
+
+        [HttpPut("daco")]
+        public async Task<IActionResult> PutChiTietDatBanDaCo(ChiTietDatBan chiTiet)
+        {
+            var ct = await _context.ChiTietDatBans.Where(x=>x.id_hoadon==chiTiet.id_hoadon && x.id_monan==chiTiet.id_monan).FirstOrDefaultAsync();
+            if (ct == null)
+                return NotFound();
+            ct.soluong++;
             _context.ChiTietDatBans.Update(ct);
             await _context.SaveChangesAsync();
             return Ok(ct);

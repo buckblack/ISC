@@ -27,14 +27,14 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
     this.userService.login(this.email, this.password).subscribe(result => {
-      if (result.id === 0) {
-        this.message = 'Sai tên đăng nhập hoặc mật khẩu';
+      if (result.errorCode === 1) {
+        this.message = result.message;
       } else {
-        if (result.trangthai === false) {
+        if (result.data.trangthai === false) {
           this.message = 'Tài khoản này đã bị khóa';
         } else {
-          this.message = '';
-          localStorage.setItem('username', result.ten);
+          localStorage.setItem('username', result.data.ho + ' ' + result.data.ten);
+          localStorage.setItem('userid', result.data.id.toString());
           this.router.navigate(['/dashboard']);
         }
       }

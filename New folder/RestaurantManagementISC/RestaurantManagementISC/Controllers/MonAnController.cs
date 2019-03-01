@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
 {
@@ -80,14 +81,26 @@ namespace RestaurantManagementISC.Controllers
 
         // POST: api/MonAn
         [HttpPost]
-        public async Task<ActionResult<MonAn>> PostMonAn(MonAn monAn)
+        //public async Task<ActionResult<MonAn>> PostMonAn(MonAn monAn)
+        //{
+        //    _context.MonAns.Add(monAn);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetMonAn", new { id = monAn.Id }, monAn);
+        //}
+        public async Task<ActionResult<BaseRespone>> PostMonAn(MonAn monAn)
         {
-            _context.MonAns.Add(monAn);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetMonAn", new { id = monAn.Id }, monAn);
+            try
+            {
+                _context.MonAns.Add(monAn);
+                await _context.SaveChangesAsync();
+                return new BaseRespone(monAn);
+            }
+            catch
+            {
+                return new BaseRespone { ErrorCode = 1 ,Message="Lỗi"};
+            }
         }
-
         // DELETE: api/MonAn/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<MonAn>> DeleteMonAn(int id)

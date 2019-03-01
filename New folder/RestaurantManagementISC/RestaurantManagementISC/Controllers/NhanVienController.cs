@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagementISC.Models;
+using RestaurantManagementISC.Models.VewModels;
 
 namespace RestaurantManagementISC.Controllers
 {
@@ -28,7 +29,7 @@ namespace RestaurantManagementISC.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<LoginRespone>> GetInfoLogin(LoginReqest lg)
+        public async Task<ActionResult<BaseRespone>> GetInfoLogin(LoginRequest lg)
         {
             NhanVien nv= await _context.NhanViens.FirstOrDefaultAsync(x=>x.password==lg.password && x.email==lg.email);
             LoginRespone loginRespone = new LoginRespone();
@@ -36,9 +37,15 @@ namespace RestaurantManagementISC.Controllers
             {
                 loginRespone.id = nv.Id;
                 loginRespone.ten = nv.tennhanvien;
+                loginRespone.ho = nv.honhanvien;
+                loginRespone.token = "";
                 loginRespone.trangthai = nv.trangthai;
+                return new BaseRespone(loginRespone);
             }
-            return loginRespone;
+            return new BaseRespone {
+                ErrorCode=1,
+                Message="Sai tên đăng nhập hoặc mật khẩu"
+            };
         }
 
         // GET: api/NhanVien/5

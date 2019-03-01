@@ -15,7 +15,7 @@ import { HoaDonComponent } from './dashboard/hoa-don/hoa-don.component';
 import { ChartModule, HIGHCHARTS_MODULES  } from 'angular-highcharts';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as more from 'highcharts/highcharts-more.src';
-import { CkComponent } from './controls/ck/ck.component';
+import { ModalModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,7 @@ import { CkComponent } from './controls/ck/ck.component';
     BanHangComponent,
     HangHoaComponent,
     ThongKeComponent,
-    HoaDonComponent,
-    CkComponent
+    HoaDonComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +33,8 @@ import { CkComponent } from './controls/ck/ck.component';
     FormsModule,
     HttpClientModule,
     CKEditorModule,
-    ChartModule
+    ChartModule,
+    ModalModule.forRoot()
   ],
   providers: [
     { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting ] } // add as factory to your providers

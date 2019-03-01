@@ -8,8 +8,8 @@
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a class="navbar-brand" href="#">Hàng hóa</a>
-          <button class="btn btn-success my-2 my-sm-0 mr-3 ml-lg-auto" data-toggle="modal" data-target="#modal-add-new"><i
-              class="fa fa-plus"></i> Thêm mới</button>
+          <button class="btn btn-success my-2 my-sm-0 mr-3 ml-lg-auto" (click)="getAllHangHoa()"><i
+              class="fa fa-plus" ></i> Thêm mới</button>
           <div class="dropdown">
             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
@@ -101,7 +101,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="h3 text-primary">Hình ảnh</div>
+                <div class="h3 text-primary">Sản phẩm ABC</div>
                 <div class="row">
                   <div class="col-sm-3">
                     <img *ngIf="detail!=null" src="/assets/images/sanpham/{{detail.hinhanh}}" class="img-fluid w-100" alt="" data-toggle="modal"
@@ -124,7 +124,7 @@
                         </tr>
                         <tr>
                           <td>Giá bán:</td>
-                          <td><strong *ngIf="detail!=null">{{detail.dongia}}</strong></td>
+                          <td><strong *ngIf="detail!=null">{{(detail.dongia).toLocaleString('en-GB')}}</strong></td>
                         </tr>
                       </tbody>
                     </table>
@@ -138,7 +138,7 @@
                         </tr>
                         <tr>
                           <td>Mô tả:</td>
-                          <td *ngIf="detail!=null" [innerHTML]="detail.noidung"></td>
+                          <td *ngIf="detail!=null"[innerHTML]="detail.noidung"></td>
                         </tr>
                       </tbody>
                     </table>
@@ -182,67 +182,50 @@
 
 
         <!-- modal thêm mới -->
-        <div class="modal fade" id="modal-add-new" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        <div bsModal #modalAddNew="bs-modal" class="modal fade" id="modal-add-new"  tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
           aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Thêm sản phẩm mới</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" (click)="modalAddNew.hide()">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <div class="form-group">
                   <label>Tên hàng</label>
-                  <input type="text" class="form-control" placeholder="Nhập tên sản phẩm mới">
+                  <input type="text" class="form-control" placeholder="Nhập tên sản phẩm mới" [(ngModel)]="hangHoaMoi.tenmonan">
                 </div>
                 <div class="form-group">
                   <label>Loại hàng</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select class="form-control" [(ngModel)]="hangHoaMoi.id_loaimonan">
+                    <option *ngFor="let item of loaiHHs" value="{{item.id}}">{{item.tenloai}}</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label>Đơn giá</label>
-                  <input type="number" class="form-control" placeholder="Nhập tên sản phẩm mới">
+                  <input type="number" class="form-control" placeholder="Nhập tên sản phẩm mới" [(ngModel)]="hangHoaMoi.dongia">
                 </div>
                 <div class="form-group">
-                  <label>Đơn vị tính</label>
-                  <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <label>Trạng thái</label>
+                  <select class="form-control" [(ngModel)]="hangHoaMoi.trangthai" >
+                    <option value="đang kinh doanh">đang kinh doanh</option>
+                    <option value="ngừng kinh doanh">ngừng kinh doanh</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label>Hình ảnh</label>
-                  <input type="file" class="form-control-file">
+                  <input type="file" class="form-control-file" (change)="handleUpload($event)">
                 </div>
 
                 <label>Mô tả</label>
-                <app-ck [(ngModel)]="cke_them" ngDefaultControl></app-ck>
-                <ckeditor [config]="{ toolbarGroups: [
-                  { name: 'document',	   groups: [ 'mode', 'document' ] },
-                   { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-                   '/',
-                   { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-                   { name: 'links' }
-                ] }" [(ngModel)]="cke_them" name="cke_them"></ckeditor>
-                <button (click)='show()'></button>
-
+                <ckeditor [(ngModel)]="cke_them"></ckeditor>
 
               </div>
-              <div class="
-                                            modal-footer">
-                <button type="button" class="btn btn-primary">Thêm</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="themHangHoa()">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalAddNew.hide()">Đóng</button>
               </div>
             </div>
           </div>

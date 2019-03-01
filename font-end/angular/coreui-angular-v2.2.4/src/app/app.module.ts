@@ -46,6 +46,7 @@ import { StudentComponent } from './pages/student/student.component';
 import { ModalModule } from 'ngx-bootstrap';
 import { AuthGuard } from './auth.guard';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { Student2Component } from './pages/student2/student2/student2.component';
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import { AuthInterceptor } from './services/auth.interceptor';
     LoginComponent,
     RegisterComponent,
     MajorComponent,
-    StudentComponent
+    StudentComponent,
+    Student2Component
   ],
   providers: [
     {

@@ -29,5 +29,10 @@ export const navItems: NavData[] = [
     name: 'Student',
     icon: 'fa fa-users',
     url: '/student',
+  },
+  {
+    name: 'Student2',
+    icon: 'fa fa-users',
+    url: '/student2',
   }
 ]

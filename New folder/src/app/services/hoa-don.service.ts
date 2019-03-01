@@ -85,6 +85,10 @@ export class HoaDonService {
     return this.http.get(this.api.apiUrl.hoadon + '/tongtien/' + id);
   }
 
+  public updateThanhToan(id, param) {
+    return this.http.put(this.api.apiUrl.hoadon + '/' + id, param);
+  }
+
   public deleteChitiet(id) {
     return this.http.delete(this.api.apiUrl.chitietdatban + '/' + id);
   }

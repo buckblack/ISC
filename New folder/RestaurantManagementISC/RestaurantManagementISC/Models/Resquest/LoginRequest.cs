@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagementISC.Models
 {
-    public class LoginReqest
+    public class LoginRequest
     {
         public string email { get; set; }
         public string password { get; set; }
