@@ -12,7 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="data\" />
+    <Folder Include="wwwroot\data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\data\10_23-5-19-codedolineChaythuDethiVanvan.rar" />
   </ItemGroup>
 
 </Project>

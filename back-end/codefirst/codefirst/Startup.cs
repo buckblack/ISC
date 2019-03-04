@@ -75,6 +75,7 @@ namespace codefirst
                 app.UseHsts();
             }
 
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseCors("AllowAllHeaders");
             app.UseAuthentication();
