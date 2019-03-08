@@ -12949,11 +12949,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ISC\\back-end\\codefirst\\codefirst\\codefirst.csproj",
-      "projectName": "codefirst",
-      "projectPath": "D:\\ISC\\back-end\\codefirst\\codefirst\\codefirst.csproj",
+      "projectUniqueName": "D:\\ISC\\back-end\\test\\HoMinhTien\\HoMinhTien\\HoMinhTien.csproj",
+      "projectName": "HoMinhTien",
+      "projectPath": "D:\\ISC\\back-end\\test\\HoMinhTien\\HoMinhTien\\HoMinhTien.csproj",
       "packagesPath": "C:\\Users\\buckb\\.nuget\\packages\\",
-      "outputPath": "D:\\ISC\\back-end\\codefirst\\codefirst\\obj\\",
+      "outputPath": "D:\\ISC\\back-end\\test\\HoMinhTien\\HoMinhTien\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,0 +1,14 @@
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\bin\Debug\netcoreapp2.2\HoMinhTien.deps.json
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\bin\Debug\netcoreapp2.2\HoMinhTien.runtimeconfig.json
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\bin\Debug\netcoreapp2.2\HoMinhTien.runtimeconfig.dev.json
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\bin\Debug\netcoreapp2.2\HoMinhTien.dll
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.csprojAssemblyReference.cache
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.csproj.CoreCompileInputs.cache
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.RazorAssemblyInfo.cache
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.RazorAssemblyInfo.cs
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.AssemblyInfoInputs.cache
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.AssemblyInfo.cs
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.RazorTargetAssemblyInfo.cache
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\bin\Debug\netcoreapp2.2\HoMinhTien.pdb
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.dll
+D:\ISC\back-end\test\HoMinhTien\HoMinhTien\obj\Debug\netcoreapp2.2\HoMinhTien.pdb

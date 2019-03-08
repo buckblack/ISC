@@ -22,7 +22,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "codefirst/1.0.0": {
+      "HoMinhTien/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
@@ -30,10 +30,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.0"
         },
         "runtime": {
-          "codefirst.dll": {}
+          "HoMinhTien.dll": {}
         },
         "compile": {
-          "codefirst.dll": {}
+          "HoMinhTien.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
@@ -3529,7 +3529,7 @@
     }
   },
   "libraries": {
-    "codefirst/1.0.0": {
+    "HoMinhTien/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
