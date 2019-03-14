@@ -60,6 +60,7 @@ export interface KhachHangInfo {
   dienthoai: string;
   ghichu: string;
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -76,6 +77,8 @@ export class HoaDonService {
   public getHoaDon(id): Observable<ChiTietHoaDonInfo> {
     return this.http.get<ChiTietHoaDonInfo>(this.api.apiUrl.chitietdatban + '/hoadon/' + id);
   }
+
+
 
   public postHoaDon(param): Observable<HoaDonInfo> {
     return this.http.post<HoaDonInfo>(this.api.apiUrl.hoadon, param);

@@ -58,18 +58,13 @@ export class ThongKeComponent implements OnInit {
     series: [
       {
         name: 'Tèo',
-        data: [1, 0, 4, 10],
+        data: [1, 2, 4, 10],
         color: 'red'
       } as any,
       {
         name: 'Tý',
-        data: [5, 7, 3, 0],
+        data: [5, 7, 3, 3],
         color: 'green'
-      } as any,
-      {
-        name: 'Mận',
-        data: [0, 0, 0, 10],
-        color: 'blue'
       } as any
     ]
   });

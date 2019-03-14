@@ -1,0 +1,75 @@
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper p-0">
+    <div class="table-agile-info p-0">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Thống kê nguyên liệu tồn kho
+        </div>
+        <div class="text-center">
+          <div class="my-3 d-inline-block  text-center">
+            <div class="form-group float-left mr-2 d-block">
+              <label for=""><strong>Từ ngày</strong></label>
+              <input type="date" class="form-control" name="" id="" [(ngModel)]="dateFrom">
+            </div>
+            <div class="form-group float-left ml-2">
+              <label for=""><strong>Đến ngày</strong></label>
+              <input type="date" class="form-control" [(ngModel)]="dateTo" name="" id="">
+            </div>
+            <div class="text-center">
+                <div class="">
+                    <label for=""><strong>Nguyên liệu</strong></label>
+                    <select class="form-control" [(ngModel)]="select_nl" name="" id="">
+                      <option value="0">Tất cả</option>
+                      <option *ngFor="let row of nguyenlieus" value="{{row.id}}">{{row.tennguyenlieu}}</option>
+                    </select>
+                  </div>
+              <button class="btn btn-group-lg btn-success" (click)="click()"><i class="fa fa-search"> Tìm</i></button>
+            </div>
+
+          </div>
+        </div>
+
+        <table id="example" class="table table-striped table-bordered bg-light table-hover" style="width:100%">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Mã nguyên liệu</th>
+              <th>Tên nguyên liệu</th>
+              <th>Tồn đầu</th>
+              <th>Nhập</th>
+              <th>xuất</th>
+              <th>Tồn cuối</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let row of TonKhos | paginate: { itemsPerPage: 20, currentPage: page }; let i=index">
+              <td>{{i+1}}</td>
+              <td>{{row.id_nguyenlieu}}</td>
+              <td>{{row.tennguyenlieu}}</td>
+              <td>{{row.tondau}}</td>
+              <td>{{row.nhap}}</td>
+              <td>{{row.xuat}}</td>
+              <td>{{row.toncuoi}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+        <div class="text-center pb-1">
+          <pagination-controls class="text-center" previousLabel="Trang trước"
+nextLabel="Trang sau" (pageChange)="page = $event"></pagination-controls>
+      </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- footer -->
+  <div class="footer">
+    <div class="wthree-copyright">
+      <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+    </div>
+  </div>
+  <!-- / footer -->
+</section>
+<!--main content end-->

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,10 @@ import { ChartModule, HIGHCHARTS_MODULES  } from 'angular-highcharts';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as more from 'highcharts/highcharts-more.src';
 import { ModalModule } from 'ngx-bootstrap';
+import { ThongKeDoanhThuComponent } from './dashboard/thong-ke/thong-ke-doanh-thu/thong-ke-doanh-thu.component';
+import { ThongKeSoLuongComponent } from './dashboard/thong-ke/thong-ke-so-luong/thong-ke-so-luong.component';
+import { ThongKeTonKhoComponent } from './dashboard/thong-ke/thong-ke-ton-kho/thong-ke-ton-kho.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,10 @@ import { ModalModule } from 'ngx-bootstrap';
     BanHangComponent,
     HangHoaComponent,
     ThongKeComponent,
-    HoaDonComponent
+    HoaDonComponent,
+    ThongKeDoanhThuComponent,
+    ThongKeSoLuongComponent,
+    ThongKeTonKhoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,9 @@ import { ModalModule } from 'ngx-bootstrap';
     HttpClientModule,
     CKEditorModule,
     ChartModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    DataTablesModule,
+    NgxPaginationModule
   ],
   providers: [
     { provide: HIGHCHARTS_MODULES, useFactory: () => [ more, exporting ] } // add as factory to your providers

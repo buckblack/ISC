@@ -45,6 +45,9 @@ export class HangHoaService {
   public getAllMonAn(): Observable<MonanList> {
     return this.http.get<MonanList>(this.api.apiUrl.monan);
   }
+  public getAllMonAnBanHang(): Observable<MonanList> {
+    return this.http.get<MonanList>(this.api.apiUrl.banhang);
+  }
   public getMonAn(id): Observable<MonanInfo> {
     return this.http.get<MonanInfo>(this.api.apiUrl.monan + '/' + id);
   }
@@ -76,5 +79,13 @@ export class HangHoaService {
 
   public getAllLoaiHangHoa(): Observable<ListLoaimonanInfo> {
     return this.http.get<ListLoaimonanInfo>(this.api.apiUrl.loaimonan);
+  }
+
+  public updateTinhTrangMonAn(param, id): Observable<MonanInfo> {
+    return this.http.put<MonanInfo>(this.api.apiUrl.tinhtrangmonan + '/' + id, param);
+  }
+
+  public CapNhatHangHoa(param, id: number): Observable<MonanInfo> {
+    return this.http.put<MonanInfo>(this.api.apiUrl.monan + '/' + id, param);
   }
 }

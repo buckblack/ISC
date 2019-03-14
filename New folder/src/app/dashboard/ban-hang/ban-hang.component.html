@@ -64,13 +64,13 @@
                                             <button class="btn btn-info ml-2">Món chính</button>
                                             -->
                                             <nav class="nav nav-pills nav-justified">
-                                                <a class="nav-link btn ml-2 active">Tất cả</a>
+                                                <a class="nav-link btn ml-2 active" (click)="loadMonan()" >Tất cả</a>
                                                 <a class="nav-link btn btn-outline-primary ml-2">Khai vị</a>
                                                 <a class="nav-link btn btn-outline-primary ml-2">Món chính</a>
                                               </nav>
                                             <div class="row mx-0 my-2 text-center">
                                                 <div *ngFor="let row of monans" class="card text-center bg-light px-2 m-2 w-25" (click)="chon_mon(row.id,row.dongia)">
-                                                    <img class="card-img-top px-3" style="width: 120px; height: 100px;" src="/assets/images/sanpham/{{row.hinhanh}}" alt="Card image cap">
+                                                    <img class="card-img-top px-3 mx-auto my-1" style="width: 120px; height: 100px;" src="{{row.hinhanh}}" alt="Card image cap">
                                                     <div class="card-body p-0">
                                                         <p class="card-text">{{row.tenmonan}}</p>
                                                         <strong class="card-text">{{(row.dongia).toLocaleString('en-GB')}}</strong>

@@ -12072,7 +12072,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\isc\\.nuget\\packages\\": {},
+    "C:\\Users\\buckb\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12081,14 +12081,14 @@
       "projectUniqueName": "D:\\ISC\\back-end\\todoapi\\todoapi\\todoapi.csproj",
       "projectName": "todoapi",
       "projectPath": "D:\\ISC\\back-end\\todoapi\\todoapi\\todoapi.csproj",
-      "packagesPath": "C:\\Users\\isc\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\buckb\\.nuget\\packages\\",
       "outputPath": "D:\\ISC\\back-end\\todoapi\\todoapi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\isc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\buckb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
