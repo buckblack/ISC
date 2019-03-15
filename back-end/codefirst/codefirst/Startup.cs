@@ -76,7 +76,7 @@ namespace codefirst
             }
 
             app.UseStaticFiles();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseCors("AllowAllHeaders");
             app.UseAuthentication();
             app.UseMvc();
